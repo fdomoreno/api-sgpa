@@ -5,6 +5,7 @@ import logging
 import sys
 from utils.constants import constants
 from utils.environments import environments
+from logging.handlers import RotatingFileHandler
 sys.dont_write_bytecode = True
 
 class logger:
@@ -15,8 +16,10 @@ class logger:
         self._logger.setLevel(log_level)
         formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         if log_path is None:
-            log_path = environments().get(constants.LOGS).get(constants.LOGS_PATH)
-        file_handler = logging.FileHandler(log_path)
+            log_path = f"{environments().get(constants.LOGS).get(constants.LOGS_PATH)}{environments().get(constants.LOGS).get((constants.LOGS_FILE_NAME))}"
+        maxBytes = int(environments().get(constants.LOGS).get(constants.LOGS_MAX_BYTES_SIZE))
+        backupCount = int(environments().get(constants.LOGS).get(constants.LOGS_MAX_FILE))
+        file_handler = RotatingFileHandler(log_path, maxBytes=maxBytes, backupCount=backupCount)
         file_handler.setFormatter(formatter)
         self._logger.addHandler(file_handler)
         console_handler = logging.StreamHandler(sys.stdout)

@@ -19,3 +19,28 @@ class constants:
     LOGS = "logs"
     LOGS_PATH = "logpath"
     LOGS_LEVEL = "loglevel"
+    LOGS_FILE_NAME = "logfilename"
+    LOGS_MAX_BYTES_SIZE = "logmaxsize"
+    LOGS_MAX_FILE = "logmaxfiles"
+
+    #Database
+    TABLE_USUARIO = "usuario"
+
+    
+
+
+    #HTTP Status
+    HTTP_OK = 200
+    HTTP_MESSAGE_OK = "OK"
+    HTTP_CREATED = 201
+    HTTP_MESSAGE_CREATED = "Created"
+    HTTP_BAD_REQUEST = 400
+    HTTP_MESSAGE_BAD_REQUEST = "Bad Request"
+    HTTP_UNAUTHORIZED = 401
+    HTTP_MESSAGE_UNAUTHORIZED = "Unauthorized"
+    HTTP_FORBIDDEN = 403
+    HTTP_MESSAGE_FORBIDDEN = "Forbidden"
+    HTTP_NOT_FOUND = 404
+    HTTP_MESSAGE_NOT_FOUND = "Not Found"
+    HTTP_INTERNAL_SERVER_ERROR = 500
+    HTTP_MESSAGE_INTERNAL_SERVER_ERROR = "Internal Server Error"

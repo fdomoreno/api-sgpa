@@ -3,6 +3,7 @@ from utils.logger import logger
 from utils.environments import environments
 from utils.constants import constants
 from services.usuario_service import usuario_service
+from models.contracts.response import response
 
 usuario_controller = Blueprint('usuario_controller', __name__)
 
@@ -11,10 +12,10 @@ logger = logger(__name__)
 @usuario_controller.route('/usuarios', methods=['GET'])
 def get_usuarios():
     try:
-        return jsonify(usuario_service().get_usuarios())
+        return usuario_service().get_usuarios()
     except Exception as e:
-        logger.error(f"Error en get_usuarios 2: {str(e)}")
-        return jsonify({"error": f"Error en get_usuarios: {str(e)}"})
+        logger.error(f"Error en get_usuarios: {str(e)}")
+        return jsonify(response(constants.HTTP_FORBIDDEN,constants.HTTP_MESSAGE_FORBIDDEN,str(e))),constants.HTTP_FORBIDDEN
 
 @usuario_controller.route('/usuario/<id_usuario>', methods=['GET'])
 def get_usuario(id_usuario):
@@ -22,7 +23,7 @@ def get_usuario(id_usuario):
         return jsonify(usuario_service().get_usuario(id_usuario))
     except Exception as e:
         logger.error("Error en get_usuario: " + str(e))
-        return jsonify(None)
+        return jsonify(response(constants.HTTP_FORBIDDEN,constants.HTTP_MESSAGE_FORBIDDEN,str(e))),constants.HTTP_FORBIDDEN
     
 @usuario_controller.route('/usuario', methods=['POST'])
 def insert_usuario():
@@ -30,7 +31,7 @@ def insert_usuario():
         return jsonify(usuario_service().insert_usuario(request.json))
     except Exception as e:
         logger.error("Error en insert_usuario: " + str(e))
-        return jsonify(False)
+        return jsonify(response(constants.HTTP_FORBIDDEN,constants.HTTP_MESSAGE_FORBIDDEN,str(e))),constants.HTTP_FORBIDDEN
     
 @usuario_controller.route('/usuario', methods=['PUT'])
 def update_usuario():
@@ -38,7 +39,7 @@ def update_usuario():
         return jsonify(usuario_service().update_usuario(request.json))
     except Exception as e:
         logger.error("Error en update_usuario: " + str(e))
-        return jsonify(False)
+        return jsonify(response(constants.HTTP_FORBIDDEN,constants.HTTP_MESSAGE_FORBIDDEN,str(e))),constants.HTTP_FORBIDDEN
 
 @usuario_controller.route('/usuario/<id_usuario>', methods=['DELETE'])
 def delete_usuario(id_usuario):
@@ -46,5 +47,5 @@ def delete_usuario(id_usuario):
         return jsonify(usuario_service().delete_usuario(id_usuario))
     except Exception as e:
         logger.error("Error en delete_usuario: " + str(e))
-        return jsonify(False)
+        return jsonify(response(constants.HTTP_FORBIDDEN,constants.HTTP_MESSAGE_FORBIDDEN,str(e))),constants.HTTP_FORBIDDEN
 

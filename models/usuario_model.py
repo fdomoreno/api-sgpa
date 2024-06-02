@@ -1,21 +1,18 @@
 from db.db_manager import db_manager
 from utils.logger import logger
 from datetime import datetime
+from utils.constants import constants
 
 class usuario_model():
-    _cursor = None
-    _conexion = None
+    _db_manager = None
     _log = logger(__name__).get_logger()
 
     def __init__(self):
-        self._conexion = db_manager().get_connection()
-        self._cursor = db_manager().get_cursor()
+        self._db_manager = db_manager()
 
     def get_usuarios(self):
         try:
-            self._cursor.execute("SELECT * FROM usuario")
-            self._log.info("Usuarios obtenidos")
-            return self._cursor.fetchall()
+            return self._db_manager.getAll(constants.TABLE_USUARIO,["id","nombreusuario, fecha_creacion", "fecha_actualizacion"])
         except Exception as e:
             self._log.error(f"Error en get_usuarios: {str(e)}")
             raise Exception(f"Error en get_usuarios: {str(e)}")

@@ -1,5 +1,8 @@
 from models.usuario_model import usuario_model
 from utils.logger import logger
+from utils.constants import constants
+from models.contracts.response import response
+from flask import jsonify
 
 class usuario_service():
 
@@ -10,7 +13,10 @@ class usuario_service():
 
     def get_usuarios(self):
         try:
-            return usuario_model().get_usuarios()
+            result = usuario_model().get_usuarios()
+            if result:
+                return jsonify(response(constants.HTTP_OK,constants.HTTP_MESSAGE_OK,result).to_dict()),constants.HTTP_OK
+            return jsonify(response(constants.HTTP_NOT_FOUND,constants.HTTP_MESSAGE_NOT_FOUND,result).to_dict()),constants.HTTP_NOT_FOUND
         except Exception as e:
             self._log.error(f"Error en get_usuarios: {str(e)}")
             raise Exception(f"Error en get_usuarios: {str(e)}")
