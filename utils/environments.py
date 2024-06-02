@@ -1,6 +1,7 @@
 import os
 import json
 import sys
+from utils.constants import constants
 sys.dont_write_bytecode = True
 
 #Clase singleton que se encarga de leer las variables de entorno del archivo env.json
@@ -15,7 +16,7 @@ class environments:
             if env_path is not None:
                 self._instance._env = self._instance._load_env(env_path)
             else:
-                self._instance._env = self._instance._load_env(os.path.join(os.path.dirname(__file__), 'env.json'))
+                self._instance._env = self._instance._load_env(os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), constants.ENV_FILE_PATH))
         return self._instance
 
     def _load_env(self, env_path):

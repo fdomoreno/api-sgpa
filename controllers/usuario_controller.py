@@ -1,10 +1,12 @@
 from flask import Blueprint, request, jsonify
 from utils.logger import logger
+from utils.environments import environments
+from utils.constants import constants
 from services.usuario_service import usuario_service
 
 usuario_controller = Blueprint('usuario_controller', __name__)
 
-logger = logger("usuario_controller","./logs/app.log").get_logger()
+logger = logger(__name__)
 
 @usuario_controller.route('/usuarios', methods=['GET'])
 def get_usuarios():

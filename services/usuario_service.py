@@ -3,7 +3,8 @@ from utils.logger import logger
 
 class usuario_service():
 
-    _log = logger("usuario_service","./logs/app.log")
+    _log = logger(__name__)
+
     def __init__(self):
         pass
 
@@ -19,19 +20,19 @@ class usuario_service():
             return usuario_model().get_usuario(id_usuario)
         except Exception as e:
             self._log.error("Error en get_usuario: " + str(e))
-            return None 
+            raise Exception(f"Error en get_usuario: {str(e)}") 
         
     def insert_usuario(self, usuario):
         try:
             return usuario_model().insert_usuario(usuario)
         except Exception as e:
             self._log.error("Error en insert_usuario: " + str(e))
-            return False
+            raise Exception(f"Error en insert_usuario: {str(e)}")
     
     def update_usuario(self, usuario):
         try:
             return usuario_model().update_usuario(usuario)
         except Exception as e:
             self._log.error("Error en update_usuario: " + str(e))
-            return False
+            raise Exception(f"Error en update_usuario: {str(e)}")
     

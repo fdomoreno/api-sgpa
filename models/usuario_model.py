@@ -5,7 +5,7 @@ from datetime import datetime
 class usuario_model():
     _cursor = None
     _conexion = None
-    _log = logger("usuario_model",f"./logs/app.log").get_logger()
+    _log = logger(__name__).get_logger()
 
     def __init__(self):
         self._conexion = db_manager().get_connection()
@@ -26,7 +26,7 @@ class usuario_model():
             return self._cursor.fetchone()
         except Exception as e:
             logger.error("Error en get_usuario: " + str(e))
-            return None
+            raise Exception(f"Error en get_usuario: {str(e)}")
         
     def insert_usuario(self, usuario):
         try:
@@ -36,7 +36,7 @@ class usuario_model():
             return True
         except Exception as e:
             logger.error("Error en insert_usuario: " + str(e))
-            return False
+            raise Exception(f"Error en insert_usuario: {str(e)}")
         
     def update_usuario(self, usuario):
         try:
@@ -46,7 +46,7 @@ class usuario_model():
             return True
         except Exception as e:
             logger.error("Error en update_usuario: " + str(e))
-            return False
+            raise Exception(f"Error en update_usuario: {str(e)}")
     
     def delete_usuario(self, id_usuario):
         try:
@@ -55,6 +55,6 @@ class usuario_model():
             return True
         except Exception as e:
             logger.error("Error en delete_usuario: " + str(e))
-            return False
+            raise Exception(f"Error en delete_usuario: {str(e)}")
         
     
