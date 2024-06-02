@@ -1,0 +1,28 @@
+#Ignore archivos de configuración
+*.yml
+*.json
+*.properties
+*.xml
+*.conf
+*.cfg
+*.config
+*.ini
+*.env
+*.env.*
+*.env.local
+*.env.development
+*.log
+*.log.*
+__pycache__/
+logs/
+evn.json
+
+#ignorar archivos venv
+lib/
+lib64/
+bin/
+include/
+share/
+local/
+pip-selfcheck.json
+*.pyc
