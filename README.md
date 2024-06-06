@@ -20,10 +20,16 @@ Para ejecutar un archivo de Python, sigue estos pasos:
     ```
         pip install -r requirements.txt
     ```
+4. Configurar variables de entorno tomar como ejemplo archivo .env.example
 
-4. Abre tu terminal y navega hasta la ubicación del archivo Python que deseas ejecutar. Puedes usar el comando `cd` para cambiar de directorio.
+    ```
+        cp env-example.json env.json
+    ```
 
-5. Una vez que estés en el directorio correcto, ejecuta el siguiente comando para ejecutar el archivo Python:
+
+5. Abre tu terminal y navega hasta la ubicación del archivo Python que deseas ejecutar. Puedes usar el comando `cd` para cambiar de directorio.
+
+6. Una vez que estés en el directorio correcto, ejecuta el siguiente comando para ejecutar el archivo Python:
 
     ```
     python app.py
@@ -31,6 +37,6 @@ Para ejecutar un archivo de Python, sigue estos pasos:
 
     Asegúrate de reemplazar "app.py" con el nombre real de tu archivo Python.
 
-5. Si todo está configurado correctamente, el archivo Python se ejecutará y verás la salida en tu terminal.
+7. Si todo está configurado correctamente, el archivo Python se ejecutará y verás la salida en tu terminal.
 
 Recuerda que estos pasos pueden variar dependiendo del sistema operativo que estés utilizando. Asegúrate de tener los permisos adecuados para ejecutar el archivo y de que todas las dependencias necesarias estén instaladas. 
