@@ -52,3 +52,9 @@ Recuerda que estos pasos pueden variar dependiendo del sistema operativo que est
 
 - Base de datos: MySQL
 - Versión de Python: 3.10.11
+
+## Prueba con Postman:
+
+1. Abre Postman y importar colecció de pruebas `Talento_Tech_G1.postman_collection.json`.
+2. Verificar las cabeceras de usuario y contraseña en la colección.
+3. Ejecutar las pruebas.

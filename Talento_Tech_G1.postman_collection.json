@@ -1,0 +1,390 @@
+{
+	"info": {
+		"_postman_id": "1ab1cda4-f2b2-4d58-980e-33111f835d81",
+		"name": "Talento_Tech_G1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "24517588"
+	},
+	"item": [
+		{
+			"name": "APIs_Java",
+			"item": [
+				{
+					"name": "Usuarios",
+					"item": [
+						{
+							"name": "Auth",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"const responseJson = pm.response.json();",
+											"",
+											"console.log(responseJson);",
+											"",
+											"pm.collectionVariables.set(\"token\", encodeURIComponent(responseJson.data.accessTokeString));",
+											"pm.collectionVariables.set(\"clientId\", encodeURIComponent(responseJson.data.clientId));"
+										],
+										"type": "text/javascript",
+										"packages": {}
+									}
+								}
+							],
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "{{contrasena}}",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "{{usuario}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "8lC3opfpNq88fAnff6tiRP68WTsa"
+									},
+									{
+										"key": "clientSecret",
+										"value": "uW4GJ9oFtTsyrHpb3J3Efxe103Ya"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8130/api/identidad/auth/login",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8130",
+									"path": [
+										"api",
+										"identidad",
+										"auth",
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "ValidarToken",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "{{clientId}}",
+										"description": "ClientId"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8130/api/identidad/auth/validar",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8130",
+									"path": [
+										"api",
+										"identidad",
+										"auth",
+										"validar"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UsuarioGetAll",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "{{token}}",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "8lC3opfpNq88fAnff6tiRP68WTsa"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8083/api/v1/usuario/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"usuario",
+										""
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "UsuarioGetById",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Imx1aXMubW9yZW5vLnRhbGVudG90ZWNoQHVzYS5lZHUuY28iLCJpYXQiOjE3MTQ3ODcyNjgsImV4cCI6MTcxNDc5MDg2OH0.CVppXoVQJQ2WRHq7NrvSwVcmGp27oPD5CL6WlAx9qmM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "asdadsadasd"
+									}
+								],
+								"url": {
+									"raw": "http://localhost:8083/api/v1/usuario/1",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"usuario",
+										"1"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "CreateUsuario",
+							"request": {
+								"auth": {
+									"type": "bearer",
+									"bearer": [
+										{
+											"key": "token",
+											"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJsb2dpbiI6Imx1aXMubW9yZW5vLnRhbGVudG90ZWNoQHVzYS5lZHUuY28iLCJpYXQiOjE3MTQ3ODcyNjgsImV4cCI6MTcxNDc5MDg2OH0.CVppXoVQJQ2WRHq7NrvSwVcmGp27oPD5CL6WlAx9qmM",
+											"type": "string"
+										}
+									]
+								},
+								"method": "POST",
+								"header": [
+									{
+										"key": "clientId",
+										"value": "asdadsadasd"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n    \"nombre\": \"Luis Fernando Moreno Mosquera\",\n    \"nombreUsuario\": \"admin\",\n    \"correo\": \"luis.moreno.talentotech@usa.edu.co\",\n    \"clientId\": \"8lC3opfpNq88fAnff6tiRP68WTsa\",\n    \"clientSecret\": \"uW4GJ9oFtTsyrHpb3J3Efxe103Ya\",\n    \"contrasena\":\"Prueba12345\",\n    \"estado\":{\n        \"id\":1,\n        \"descripcion\":\"ACTIVO\"\n    }\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:8083/api/v1/usuario/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "8083",
+									"path": [
+										"api",
+										"v1",
+										"usuario",
+										""
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "APis_C#",
+			"item": [
+				{
+					"name": "RecursoHidrico",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:5001/api/RecursosHidricos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"RecursosHidricos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CrearRecursoHidrico",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"nombre\": \"Laguna de Tota\",\n  \"descripcion\": \"Laguna ubicada en algún lado\",\n  \"tipo\": \"Laguna\",\n  \"ubicacion\": \"Cundinamarca\",\n  \"estado\": \"Activa\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5001/api/RecursosHidricos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5001",
+							"path": [
+								"api",
+								"RecursosHidricos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "MVC",
+			"item": [
+				{
+					"name": "Usuarios",
+					"item": [
+						{
+							"name": "UsuarioGetAll",
+							"request": {
+								"auth": {
+									"type": "basic",
+									"basic": [
+										{
+											"key": "password",
+											"value": "admin",
+											"type": "string"
+										},
+										{
+											"key": "username",
+											"value": "admin",
+											"type": "string"
+										}
+									]
+								},
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:5001/api/v1/usuarios",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "5001",
+									"path": [
+										"api",
+										"v1",
+										"usuarios"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "token",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "clientId",
+			"value": "8lC3opfpNq88fAnff6tiRP68WTsa",
+			"type": "string"
+		},
+		{
+			"key": "clientSecret",
+			"value": "uW4GJ9oFtTsyrHpb3J3Efxe103Ya",
+			"type": "string"
+		},
+		{
+			"key": "usuario",
+			"value": "admin",
+			"type": "string"
+		},
+		{
+			"key": "contrasena",
+			"value": "Prueba12345",
+			"type": "string"
+		}
+	]
+}
