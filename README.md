@@ -1,3 +1,9 @@
+Para configuración de Base de datos:
+
+Utilizar MySQL versión 8.0
+
+Ejecutar el archivo: `proyecto_ecosistema_mysql_sin_relaciones.sql` para crear la base de datos y las tablas necesarias.
+
 Para ejecutar un archivo de Python, sigue estos pasos:
 
 1. Asegúrate de tener Python instalado en tu sistema. Puedes verificarlo ejecutando el siguiente comando en tu terminal:
@@ -40,3 +46,9 @@ Para ejecutar un archivo de Python, sigue estos pasos:
 7. Si todo está configurado correctamente, el archivo Python se ejecutará y verás la salida en tu terminal.
 
 Recuerda que estos pasos pueden variar dependiendo del sistema operativo que estés utilizando. Asegúrate de tener los permisos adecuados para ejecutar el archivo y de que todas las dependencias necesarias estén instaladas. 
+
+
+## Información técnica:
+
+- Base de datos: MySQL
+- Versión de Python: 3.10.11
